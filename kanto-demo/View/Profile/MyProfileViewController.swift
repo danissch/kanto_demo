@@ -7,26 +7,32 @@
 
 import Foundation
 import UIKit
-
+import Kingfisher
+protocol MyProfileViewControllerDelegate {
+    func onSaveData()
+}
 class MyProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var textfieldName: UITextField!
     @IBOutlet weak var textfieldUsername: UITextField!
     @IBOutlet weak var textFieldBiography: UITextField!
-    var imageToSave:UIImage?
+    var imageToSave:UIImage!
+    var delegate: MyProfileViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVisualConfig()
         self.hideKeyboardWhenTappedAround()
         accesToCam()
+        setupData()
     }
     
     var pickerController = UIImagePickerController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupData()
+//        setupData()
     }
     
     func setupVisualConfig(){
@@ -38,11 +44,13 @@ class MyProfileViewController: UIViewController {
     }
     
     func setupData(){
+        print("appflow:Myprofile: setupData")
+        self.imageToSave = PersistanceManager.sharedInstance.loadimg()
         self.textfieldName.text = PersistanceManager.sharedInstance.profileName
         self.textfieldUsername.text = PersistanceManager.sharedInstance.profileUserName
         self.textFieldBiography.text = PersistanceManager.sharedInstance.profileBiography
-        self.profileImageView.image = UIImage(data: PersistanceManager.sharedInstance.readImage())
-        
+//        self.profileImageView.kf.setImage(with: URL(string: PersistanceManager.sharedInstance.profileImage))
+        self.profileImageView.image = self.imageToSave
     }
     
     @IBAction func changePhotoAction(_ sender: Any) {
@@ -65,15 +73,17 @@ class MyProfileViewController: UIViewController {
     
     
     func saveData(){
+        print("appflow::Myprofile: imagePickerController")
 //        let image = imageToSave
 //        let pngImage = (image ?? UIImage(named:"userprofile"))!.pngData()
-        if imageToSave ?? false {
-            PersistanceManager.sharedInstance.savePng((imageToSave ?? UIImage(named: "userprofile"))!)
-        }
+//        if imageToSave ?? false {
+        PersistanceManager.sharedInstance.saveimg(image: self.imageToSave!)
+//        }
         
         PersistanceManager.sharedInstance.profileName = self.textfieldName.text ?? ""
         PersistanceManager.sharedInstance.profileUserName = self.textfieldUsername.text ?? ""
         PersistanceManager.sharedInstance.profileBiography = self.textFieldBiography.text ?? ""
+        delegate?.onSaveData()
     }
     
     
@@ -152,7 +162,7 @@ extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigation
         
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        print("appflow::Myprofile: imagePickerController")
 //        profileImageView.image = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage
 //        profileImageView.backgroundColor = UIColor.clear
 //        profileImageView.contentMode = UIView.ContentMode.scaleAspectFit
@@ -161,9 +171,10 @@ extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigation
                 picker.dismiss(animated: true, completion: nil)
             profileImageView.contentMode = .scaleAspectFit
             profileImageView.backgroundColor = UIColor.clear
+            self.imageToSave = capturedImage
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 self.profileImageView.image = capturedImage
-                self.imageToSave = capturedImage
+//                self.imageToSave = capturedImage
 //                PersistanceManager.sharedInstance.savePng((imageToSave ?? UIImage(named: "userprofile"))!)
 //                PersistanceManager.sharedInstance.savePng(capturedImage)
                 

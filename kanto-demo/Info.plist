@@ -66,6 +66,14 @@
 	<string>This app wants to use your camera</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app wants to save photos in your gallery</string>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string>This app wants to use your file storage</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>This app use your documents Folder</string>
+	<key>NSFileProviderPresenceUsageDescription</key>
+	<string>File Provider Presence Description</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Media Library Description</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

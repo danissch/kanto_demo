@@ -57,7 +57,7 @@ class RecordsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadUserData()
+//        loadUserData()
     }
     
     func setupViewModel(){
@@ -70,6 +70,8 @@ class RecordsViewController: UIViewController {
     func setupDelegates(){
         tableView.delegate = self
         tableView.dataSource = self
+        PersistanceManager.sharedInstance.delegate = self
+        
     }
     func setupCustomCells(){
         let cell = UINib(nibName: "RecordTableViewCell", bundle: nil)
@@ -77,10 +79,10 @@ class RecordsViewController: UIViewController {
     }
     
     func setUserInfoView(){
-        let userImageView = UserImageView.loadFromXib()
-        currentUserImageView.contentMode = .scaleAspectFill
-        userImageView.frame = CGRect(x: 0, y: 0, width: currentUserImageView.frame.width, height: currentUserImageView.frame.height)
-        currentUserImageView.addSubview(userImageView)
+//        let userImageView = UserImageView.loadFromXib()
+//        currentUserImageView.contentMode = .scaleAspectFill
+//        userImageView.frame = CGRect(x: 0, y: 0, width: currentUserImageView.frame.width, height: currentUserImageView.frame.height)
+//        currentUserImageView.addSubview(userImageView)
         
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: headerView.frame.origin.x, y: headerView.frame.origin.y - minHeaderHeight, width: headerView.frame.width, height: headerView.frame.height)
@@ -148,21 +150,29 @@ class RecordsViewController: UIViewController {
     
     @IBAction func editProfileAction(_ sender: Any) {
         let vc = MyProfileViewController.instantiateFromXIB() as MyProfileViewController
+        vc.delegate = self
         self.presentWithStyle1(vcFrom: self, vcTo: vc)
     }
     
     func loadUserData(){
+        print("appflow:Records: loadUserData")
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
 //            self.currentProfileImage.image = UIImage(data:PersistanceManager.sharedInstance.profileImage)
 //            self.currentProfileImage.image = PersistanceManager.sharedInstance.getSavedImage(named: "filePhotoUser")
-            print("appflow:: PersistanceManager.sharedInstance.readImage(): \(PersistanceManager.sharedInstance.readImage())")
-            self.currentProfileImage.image = UIImage(data: PersistanceManager.sharedInstance.readImage())
+//            print("appflow:: PersistanceManager.sharedInstance.readImage(): \(PersistanceManager.sharedInstance.readImage())")
+//            self.currentProfileImage.image = UIImage(data: PersistanceManager.sharedInstance.readImage())
             
 //        })
-        
+//        self.currentProfileImage.kf.setImage(with: URL(string: PersistanceManager.sharedInstance.profileImage))
+
         self.currentName.text = PersistanceManager.sharedInstance.profileName
         self.currentUsername.text = PersistanceManager.sharedInstance.profileUserName
         self.currentUserBiography.text = PersistanceManager.sharedInstance.profileBiography
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            PersistanceManager.sharedInstance.loadimg()
+//            self.currentProfileImage.layoutIfNeeded()
+//            self.view.layoutIfNeeded()
+//        })
     }
     
     
@@ -258,3 +268,17 @@ extension RecordsViewController {
         }
     }
 }
+
+extension RecordsViewController:MyProfileViewControllerDelegate {
+    func onSaveData() {
+        loadUserData()
+    }
+}
+extension RecordsViewController:PersistanceManagerDelegate {
+    func onLoadUserImg(img: UIImage) {
+        self.currentProfileImage.image = img
+    }
+    
+
+}
+
