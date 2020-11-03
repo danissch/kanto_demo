@@ -1,0 +1,203 @@
+//
+//  MyProfileViewController.swift
+//  kanto-demo
+//
+//  Created by Daniel Durán Schutz on 30/10/20.
+//
+
+import Foundation
+import UIKit
+
+class MyProfileViewController: UIViewController {
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var textfieldName: UITextField!
+    @IBOutlet weak var textfieldUsername: UITextField!
+    @IBOutlet weak var textFieldBiography: UITextField!
+    var imageToSave:UIImage?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupVisualConfig()
+        self.hideKeyboardWhenTappedAround()
+        accesToCam()
+    }
+    
+    var pickerController = UIImagePickerController()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupData()
+    }
+    
+    func setupVisualConfig(){
+        self.view.backgroundColor = UIColor.init(red: 23/255, green: 22/255, blue: 40/255, alpha: 1.0)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+    
+    }
+    
+    func setupData(){
+        self.textfieldName.text = PersistanceManager.sharedInstance.profileName
+        self.textfieldUsername.text = PersistanceManager.sharedInstance.profileUserName
+        self.textFieldBiography.text = PersistanceManager.sharedInstance.profileBiography
+        self.profileImageView.image = UIImage(data: PersistanceManager.sharedInstance.readImage())
+        
+    }
+    
+    @IBAction func changePhotoAction(_ sender: Any) {
+        print("appflow::: changePhotoAction")
+//        showPhotoMenu()
+        pickPhoto()
+    }
+    
+    
+    @IBAction func acceptAction(_ sender: Any) {
+        print("appflow::: acceptAction")
+        saveData()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        print("appflow::: cancelAction")
+        navigateBack()
+    }
+    
+    
+    func saveData(){
+//        let image = imageToSave
+//        let pngImage = (image ?? UIImage(named:"userprofile"))!.pngData()
+        if imageToSave ?? false {
+            PersistanceManager.sharedInstance.savePng((imageToSave ?? UIImage(named: "userprofile"))!)
+        }
+        
+        PersistanceManager.sharedInstance.profileName = self.textfieldName.text ?? ""
+        PersistanceManager.sharedInstance.profileUserName = self.textfieldUsername.text ?? ""
+        PersistanceManager.sharedInstance.profileBiography = self.textFieldBiography.text ?? ""
+    }
+    
+    
+}
+
+
+extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func accesToCam(){
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let alertController = UIAlertController.init(title: nil,
+                message: "No camera available.",
+                preferredStyle: .alert)
+            let okAction = UIAlertAction.init(title: "OK",
+                style: .default,
+                handler: {(alert: UIAlertAction!) in })
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    func pickPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+
+    func showPhotoMenu() {
+        let alert = UIAlertController(title: nil, message: nil,
+        preferredStyle: .actionSheet)
+
+        let actCancel = UIAlertAction(title: "Cancel", style: .cancel,
+        handler: nil)
+        alert.addAction(actCancel)
+
+        let actPhoto = UIAlertAction(title: "Take Photo",
+        style: .default, handler: { _ in
+            self.takePhotoWithCamera()
+        })
+
+        alert.addAction(actPhoto)
+
+        let actLibrary = UIAlertAction(title: "Choose From Library",
+        style: .default, handler: { _ in
+            self.choosePhotoFromLibrary()
+            })
+
+        alert.addAction(actLibrary)
+
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary(){
+        
+        pickerController.delegate = self 
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image", "public.movie"]
+        pickerController.sourceType = .photoLibrary
+        
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    
+    func takePhotoWithCamera(){
+//        pickerController = UIImagePickerController()
+        pickerController.sourceType = .camera
+        pickerController.cameraCaptureMode = .photo
+        pickerController.cameraDevice = UIImagePickerController.CameraDevice.front
+        pickerController.allowsEditing = true
+        pickerController.delegate = self
+        present(pickerController, animated: true)
+    }
+        
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+//        profileImageView.image = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage
+//        profileImageView.backgroundColor = UIColor.clear
+//        profileImageView.contentMode = UIView.ContentMode.scaleAspectFit
+        
+        if let capturedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                picker.dismiss(animated: true, completion: nil)
+            profileImageView.contentMode = .scaleAspectFit
+            profileImageView.backgroundColor = UIColor.clear
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.profileImageView.image = capturedImage
+                self.imageToSave = capturedImage
+//                PersistanceManager.sharedInstance.savePng((imageToSave ?? UIImage(named: "userprofile"))!)
+//                PersistanceManager.sharedInstance.savePng(capturedImage)
+                
+//                let path = "photo/temp/album1/profileImage.jpg"
+//                self.imageToSaveUrl = path
+//                guard   let img = UIImage(named: "profileImage"),
+//                        let url = img.save(at: .documentDirectory,
+//                                           pathAndImageName: path) else { return }
+//                print(url)
+                
+//                let success = PersistanceManager.sharedInstance.saveImage(image: capturedImage)
+//                self.imageToSave = capturedImage
+            })
+//            profileImageView.image = capturedImage
+            }
+        
+        pickerController.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        pickerController.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+}
+
+extension MyProfileViewController {
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -220 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+}
