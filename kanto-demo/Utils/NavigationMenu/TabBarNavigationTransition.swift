@@ -17,7 +17,6 @@ class TabBarNavigationTransition: NSObject, UIViewControllerAnimatedTransitionin
         self.viewControllers = viewControllers
     }
     
-    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return TimeInterval(transitionDuration)
     }
@@ -54,7 +53,6 @@ class TabBarNavigationTransition: NSObject, UIViewControllerAnimatedTransitionin
                 transitionContext.completeTransition(success)
             })
         }
-        
         
     }
     

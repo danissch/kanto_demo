@@ -18,7 +18,6 @@ class TabNavigationMenu: UIImageView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-//        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -29,12 +28,10 @@ class TabNavigationMenu: UIImageView {
         self.isUserInteractionEnabled = true
         self.clipsToBounds = true
         for i in 0 ..< menuItems.count {
-//            let itemWidth = self.frame.width / CGFloat(menuItems.count)
             let itemWidth = widthScreen / CGFloat(menuItems.count)
             let leadingAnchor = itemWidth * CGFloat(i)
             let itemView = self.createTabItem(item: menuItems[i])
             itemView.tag = i
-            
             self.addSubview(itemView)
             
             itemView.translatesAutoresizingMaskIntoConstraints = false

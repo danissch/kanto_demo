@@ -23,9 +23,6 @@ class RecordsViewModel: RecordsViewModelProtocol{
         
         let url = "\(ApiRoutes.recordsUrl)"
         networkService.request(url: url, method: .get, parameters: nil) { [weak self] (result) in
-//            if page == 0 {
-//                self?.privPhotosList.removeAll()
-//            }
             switch result {
             case .Success(let json, let statusCode):
                 do {
@@ -46,6 +43,5 @@ class RecordsViewModel: RecordsViewModelProtocol{
             }
         }
     }
-    
     
 }

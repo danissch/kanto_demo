@@ -20,7 +20,6 @@ class BaseNavigationController: UITabBarController {
         
     }
     
-    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         get {
             return .portrait
@@ -38,7 +37,6 @@ class BaseNavigationController: UITabBarController {
     private func setupCustomTabBar(_ items: [TabItem], completion: @escaping ([UIViewController]) -> Void){
         
         let frame = CGRect(x: tabBar.frame.origin.x, y: tabBar.frame.origin.y, width: tabBar.frame.width, height: tabBarHeight)
-        
         var controllers = [UIViewController]()
         tabBar.isHidden = true
         
@@ -46,10 +44,7 @@ class BaseNavigationController: UITabBarController {
         self.customTabBar.translatesAutoresizingMaskIntoConstraints = false
         self.customTabBar.clipsToBounds = true
         self.customTabBar.itemTapped = self.changeTab
-        
         self.customTabBar.autoresizesSubviews = true
-        
-        
         self.view.addSubview(customTabBar)
         
         NSLayoutConstraint.activate([
@@ -60,14 +55,12 @@ class BaseNavigationController: UITabBarController {
             self.customTabBar.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor)
         ])
         
-        
         for i in 0 ..< items.count {
             controllers.append(items[i].viewController)
         }
         
         self.view.layoutIfNeeded()
         completion(controllers)
-        
     }
     
     func changeTab(tab: Int){

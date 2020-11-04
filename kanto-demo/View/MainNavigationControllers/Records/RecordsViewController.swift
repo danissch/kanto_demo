@@ -25,14 +25,20 @@ class RecordsViewController: UIViewController {
     @IBOutlet weak var currentUserBiography: UILabel!
     @IBOutlet weak var editProfileButton: UIButton!
     
+    @IBOutlet weak var userSmokeImage: UIImageView!
+    @IBOutlet weak var layerOrnamentImageProfile: UIView!
     @IBOutlet weak var currentProfileImage: UIImageView!
     
     @IBOutlet weak var headerName: UILabel!
     @IBOutlet weak var headerConfigButton: UIButton!
 
+    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var counterStackView: UIStackView!
+    @IBOutlet weak var topConstraintCounters: NSLayoutConstraint!
     
-    let maxHeaderHeight: CGFloat = 264
-    let minHeaderHeight: CGFloat = 40
+    var newHeightHeader:CGFloat!
+    let maxHeaderHeight: CGFloat = 300
+    let minHeaderHeight: CGFloat = 44
     var previousScrollOffset: CGFloat = 0
     let minRecordCellHeight:CGFloat = 414
     
@@ -41,23 +47,27 @@ class RecordsViewController: UIViewController {
     
     var recordsViewModel:RecordsViewModelProtocol?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
         setupDelegates()
-        
         setupCustomCells()
-        setUserInfoView()
+        setHeaderBehavior(headerActive: false)
+        setupCountersViewFeatures()
+        setHeaderViewConfig()
+        setColoredBackHeader()
         setActivityIndicatorConfig()
         loadRecords()
         loadUserData()
-//        self.loading.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        loadUserData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setColoredBackHeader()
     }
     
     func setupViewModel(){
@@ -73,33 +83,10 @@ class RecordsViewController: UIViewController {
         PersistanceManager.sharedInstance.delegate = self
         
     }
+    
     func setupCustomCells(){
         let cell = UINib(nibName: "RecordTableViewCell", bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: "myCell")
-    }
-    
-    func setUserInfoView(){
-//        let userImageView = UserImageView.loadFromXib()
-//        currentUserImageView.contentMode = .scaleAspectFill
-//        userImageView.frame = CGRect(x: 0, y: 0, width: currentUserImageView.frame.width, height: currentUserImageView.frame.height)
-//        currentUserImageView.addSubview(userImageView)
-        
-        let layer = CAGradientLayer()
-        layer.frame = CGRect(x: headerView.frame.origin.x, y: headerView.frame.origin.y - minHeaderHeight, width: headerView.frame.width, height: headerView.frame.height)
-        layer.colors = [UIColor.init(red: 105/255, green: 72/255, blue: 243/255, alpha: 1.0).cgColor, UIColor.init(red: 125/255, green: 74/255, blue: 244/255, alpha: 1.0).cgColor, UIColor.init(red: 143/255, green: 75/255, blue: 241/255, alpha: 1.0).cgColor]
-        headerViewBack.layer.addSublayer(layer)
-        
-        //EditProfile Button
-        editProfileButton.layer.cornerRadius = 15
-        
-        
-        
-        inactiveHeader.backgroundColor = UIColor.init(red: 0/255, green: 33/255, blue: 58/255, alpha: 1.0)
-        inactiveHeader.isHidden = true
-        
-        
-        
-        
     }
     
     func setActivityIndicatorConfig(){
@@ -110,7 +97,6 @@ class RecordsViewController: UIViewController {
         loading = NVActivityIndicatorView(frame: coverView.frame, type: .ballSpinFadeLoader, color: .systemGray, padding: view.frame.width / 3)
         coverView.addSubview(loading)
         self.tabBarController?.view.addSubview(coverView)
-    
         coverView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         loading.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin, .flexibleRightMargin, .flexibleBottomMargin]
         loading.translatesAutoresizingMaskIntoConstraints = true
@@ -155,31 +141,13 @@ class RecordsViewController: UIViewController {
     }
     
     func loadUserData(){
-        print("appflow:Records: loadUserData")
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-//            self.currentProfileImage.image = UIImage(data:PersistanceManager.sharedInstance.profileImage)
-//            self.currentProfileImage.image = PersistanceManager.sharedInstance.getSavedImage(named: "filePhotoUser")
-//            print("appflow:: PersistanceManager.sharedInstance.readImage(): \(PersistanceManager.sharedInstance.readImage())")
-//            self.currentProfileImage.image = UIImage(data: PersistanceManager.sharedInstance.readImage())
-            
-//        })
-//        self.currentProfileImage.kf.setImage(with: URL(string: PersistanceManager.sharedInstance.profileImage))
-
         self.currentName.text = PersistanceManager.sharedInstance.profileName
-        self.currentUsername.text = PersistanceManager.sharedInstance.profileUserName
+        self.currentUsername.text = "@\(PersistanceManager.sharedInstance.profileUserName)"
         self.currentUserBiography.text = PersistanceManager.sharedInstance.profileBiography
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-            PersistanceManager.sharedInstance.loadimg()
-//            self.currentProfileImage.layoutIfNeeded()
-//            self.view.layoutIfNeeded()
-//        })
+        PersistanceManager.sharedInstance.loadimg()
     }
     
-    
-
 }
-
-
 
 extension RecordsViewController:UITableViewDelegate {
     
@@ -208,12 +176,6 @@ extension RecordsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         stopActivityIndicator()
-        
-        
-//        let cell = RecordTableViewCell()
-//        guard let cell = RecordTableViewCell(style: .default, reuseIdentifier: "myCell") as? RecordTableViewCell else {
-//            return UITableViewCell()
-//        }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as? RecordTableViewCell else {
             return UITableViewCell()
@@ -247,25 +209,151 @@ extension RecordsViewController {
         let isScrollingDown = scrollDiff > 0
         let isScrollingUp = scrollDiff < 0
         if canAnimateHeader(scrollView) {
-            var newHeight = headerViewHeight.constant
+            newHeightHeader = headerViewHeight.constant
+            
             if isScrollingDown {
-                newHeight = max(minHeaderHeight, headerViewHeight.constant - abs(scrollDiff))
+                newHeightHeader = max(minHeaderHeight, headerViewHeight.constant - abs(scrollDiff))
             } else if isScrollingUp {
-                newHeight = min(maxHeaderHeight, headerViewHeight.constant + abs(scrollDiff))
+                newHeightHeader = min(maxHeaderHeight, headerViewHeight.constant + abs(scrollDiff))
             }
-            if newHeight != headerViewHeight.constant {
-                headerViewHeight.constant = newHeight
+            
+            if newHeightHeader != headerViewHeight.constant {
+                headerViewHeight.constant = newHeightHeader
                 setScrollPosition()
                 previousScrollOffset = scrollView.contentOffset.y
                 if headerViewHeight.constant == minHeaderHeight {
-                    inactiveHeader.isHidden = false
+                    setHeaderBehavior(headerActive: true)
                 }else{
-                    inactiveHeader.isHidden = true
+                    setHeaderBehavior(headerActive: false)
+                }
+    
+               
+                if newHeightHeader <= maxHeaderHeight - footerView.frame.height{
+                    footerView.fadeOut()
+                }else{
+                    footerView.fadeIn()
                 }
                 
+                if newHeightHeader <= maxHeaderHeight - (footerView.frame.height + editProfileButton.frame.height){
+                    editProfileButton.fadeOut()
+                    
+                }else{
+                    editProfileButton.fadeIn()
+                }
+                
+                if newHeightHeader <= maxHeaderHeight - (footerView.frame.height + editProfileButton.frame.height +  currentUserBiography.frame.height){
+                    currentUserBiography.fadeOut()
+                }else{
+                    currentUserBiography.fadeIn()
+                }
+                
+                if newHeightHeader <= maxHeaderHeight - (footerView.frame.height + editProfileButton.frame.height +  currentUserBiography.frame.height + currentUsername.frame.height){
+                    currentUsername.fadeOut()
+                }else{
+                    currentUsername.fadeIn()
+                }
+                
+                let sumCurrentName = footerView.frame.height + editProfileButton.frame.height + currentUserBiography.frame.height + currentUsername.frame.height + currentName.frame.height
+                if newHeightHeader <= maxHeaderHeight - (sumCurrentName){
+                    currentName.fadeOut()
+                }else{
+                    currentName.fadeIn()
+                }
+                
+                let sumCurrentUserImageView = footerView.frame.height + editProfileButton.frame.height + currentUserBiography.frame.height + currentUsername.frame.height + currentName.frame.height + currentUserImageView.frame.height
+                if newHeightHeader <= maxHeaderHeight - (sumCurrentUserImageView) {
+                    currentUserImageView.fadeOut()
+                }else{
+                    currentUserImageView.fadeIn()
+                }
                 
             }
         }
+    }
+
+    
+    func setHeaderBehavior(headerActive: Bool = false){
+        editProfileButton.layer.cornerRadius = 14
+        inactiveHeader.backgroundColor = UIColor.init(red: 0/255, green: 33/255, blue: 58/255, alpha: 1.0)
+        setProfilePhotoSettings()
+
+        if headerActive {
+            inactiveHeader.isHidden = false
+            inactiveHeader.fadeIn()
+            
+//            footerView.fadeOut()
+//            footerView.isHidden = true
+//
+//            currentName.fadeOut()
+//            currentName.isHidden = true
+//
+//            currentUserImageView.fadeOut()
+//            currentUserImageView.isHidden = true
+            
+            
+            headerView.clipsToBounds = false
+    
+        }else {
+            inactiveHeader.fadeOut()
+            inactiveHeader.isHidden = true
+            
+            
+//
+//            footerView.isHidden = false
+//            footerView.fadeIn()
+//
+//            currentUserImageView.isHidden = false
+//            currentUserImageView.fadeIn()
+//
+//            currentName.isHidden = false
+//            currentName.fadeIn()
+            
+            
+            
+            headerView.clipsToBounds = true
+  
+        }
+        
+    }
+    
+    func setProfilePhotoSettings(){
+        self.currentUserImageView.clipsToBounds = true
+        self.currentUserImageView.layer.borderWidth = 1.0
+        self.currentUserImageView.layer.borderColor = UIColor.init(white: 1.0, alpha: 0.2).cgColor
+        self.currentUserImageView.layer.cornerRadius = currentUserImageView.frame.height / 2
+        
+        self.userSmokeImage.clipsToBounds = true
+        self.userSmokeImage.layer.cornerRadius = self.userSmokeImage.frame.height / 2
+        
+        self.currentProfileImage.clipsToBounds = true
+        self.currentProfileImage.layer.cornerRadius = self.currentProfileImage.frame.height / 2
+        
+        self.layerOrnamentImageProfile.clipsToBounds = true
+        self.layerOrnamentImageProfile.layer.borderColor = UIColor.init(white: 1.0, alpha: 0.6).cgColor
+        self.layerOrnamentImageProfile.layer.borderWidth = 1.0
+        self.layerOrnamentImageProfile.layer.cornerRadius = self.layerOrnamentImageProfile.frame.height / 2
+        
+    }
+    
+    func setHeaderViewConfig(){
+        headerView.clipsToBounds = true
+        headerView.layer.cornerRadius = 25
+        headerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+    }
+    
+    func setColoredBackHeader(){
+        let layer = CAGradientLayer()
+        layer.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.headerView.frame.height)
+        layer.colors = [UIColor.init(red: 105/255, green: 72/255, blue: 243/255, alpha: 1.0).cgColor, UIColor.init(red: 125/255, green: 74/255, blue: 244/255, alpha: 1.0).cgColor, UIColor.init(red: 143/255, green: 75/255, blue: 241/255, alpha: 1.0).cgColor]
+        headerViewBack.clipsToBounds = true
+        headerViewBack.layer.addSublayer(layer)
+    }
+    
+    func setupCountersViewFeatures(){
+        counterStackView.backgroundColor = UIColor.init(white: 1.0, alpha: 0.1)
+        counterStackView.clipsToBounds = true
+        counterStackView.layer.cornerRadius = 16
+        
     }
 }
 

@@ -13,10 +13,16 @@ protocol MyProfileViewControllerDelegate {
 }
 class MyProfileViewController: UIViewController {
     
+    
+    @IBOutlet weak var profileImageContainer: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var textfieldName: UITextField!
     @IBOutlet weak var textfieldUsername: UITextField!
     @IBOutlet weak var textFieldBiography: UITextField!
+    
+    @IBOutlet weak var changePhotoButton: UIButton!
+    
+    
     var imageToSave:UIImage!
     var delegate: MyProfileViewControllerDelegate?
     
@@ -35,13 +41,66 @@ class MyProfileViewController: UIViewController {
 //        setupData()
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .portrait
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupVisualConfig()
+    }
+    
     func setupVisualConfig(){
         self.view.backgroundColor = UIColor.init(red: 23/255, green: 22/255, blue: 40/255, alpha: 1.0)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        
+        changePhotoButton.clipsToBounds = true
+        changePhotoButton.layer.cornerRadius = 15
+        changePhotoButton.backgroundColor = UIColor.init(red: 35/255, green: 34/255, blue: 50/255, alpha: 1.0)
+        
+        
+        setStyle1TextField(textField: textfieldName)
+        setStyle1TextField(textField: textfieldUsername)
+        setStyle1TextField(textField: textFieldBiography)
+        
+        
+        
+//        profileImageContainer.clipsToBounds = true
+//        profileImageContainer.layer.cornerRadius = profileImageContainer.frame.height / 2
+        
+        
     }
+    
+    func setStyle1TextField(textField:UITextField){
+        
+        var bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: textField.frame.height - 1, width: textField.frame.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.darkGray.cgColor
+        textField.borderStyle = UITextField.BorderStyle.none
+        textField.layer.addSublayer(bottomLine)
+        textField.delegate = self
+    }
+    
+    func setStyle2TextField(textField:UITextField){
+
+        
+        var bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: textField.frame.height - 1, width: textField.frame.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.white.cgColor
+        textField.borderStyle = UITextField.BorderStyle.none
+        textField.layer.addSublayer(bottomLine)
+        textField.delegate = self
+    }
+    
+    
+    
     
     func setupData(){
         print("appflow:Myprofile: setupData")
@@ -210,5 +269,15 @@ extension MyProfileViewController {
 
     @objc func keyboardWillHide(sender: NSNotification) {
          self.view.frame.origin.y = 0 // Move view to original position
+    }
+}
+
+extension MyProfileViewController:UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        setStyle2TextField(textField: textField)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        setStyle1TextField(textField: textField)
     }
 }

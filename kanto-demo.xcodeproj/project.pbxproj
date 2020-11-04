@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		527B32B911BED6BEFAF158B0 /* Pods_kanto_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7DF85A00B2436B5CD6F01F /* Pods_kanto_demoTests.framework */; };
-		670AEF347FCB66C9A4E5B66A /* Pods_kanto_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB26697E3D15A34E12C5C1C6 /* Pods_kanto_demo.framework */; };
+		216D8BA2A759852FC5A28F37 /* Pods_kanto_demo_kanto_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3875645681DFFF9A603FBC0B /* Pods_kanto_demo_kanto_demoUITests.framework */; };
 		8336993A254E59D300A5F0F3 /* TabBarNavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83369939254E59D300A5F0F3 /* TabBarNavigationTransition.swift */; };
 		8336994D254F0E0600A5F0F3 /* RecordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83369945254F07C900A5F0F3 /* RecordsViewController.xib */; };
 		83369951254F0E0900A5F0F3 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB32254D170B0007B660 /* RecordsViewController.swift */; };
@@ -16,7 +15,6 @@
 		833A66BD2550F48E000C3E5B /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833A66BC2550F48D000C3E5B /* PersistanceManager.swift */; };
 		83C6DA79254CA1780007B660 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DA78254CA1780007B660 /* AppDelegate.swift */; };
 		83C6DA7B254CA1780007B660 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DA7A254CA1780007B660 /* SceneDelegate.swift */; };
-		83C6DA7D254CA1780007B660 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DA7C254CA1780007B660 /* ViewController.swift */; };
 		83C6DA80254CA1780007B660 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83C6DA7E254CA1780007B660 /* Main.storyboard */; };
 		83C6DA83254CA1780007B660 /* kanto_demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DA81254CA1780007B660 /* kanto_demo.xcdatamodeld */; };
 		83C6DA85254CA17D0007B660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83C6DA84254CA17D0007B660 /* Assets.xcassets */; };
@@ -44,16 +42,11 @@
 		83C6DB3D254D175E0007B660 /* BroadCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB3C254D175E0007B660 /* BroadCastViewController.swift */; };
 		83C6DB42254D17CE0007B660 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB41254D17CE0007B660 /* NotificationsViewController.swift */; };
 		83C6DB47254D17F90007B660 /* UserConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB46254D17F90007B660 /* UserConfigViewController.swift */; };
-		83C6DB65254D194E0007B660 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB64254D194E0007B660 /* UserImageView.swift */; };
-		83C6DB6A254D195E0007B660 /* UserImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C6DB69254D195E0007B660 /* UserImageView.xib */; };
-		83C6DB6F254D19C10007B660 /* CustomTextfieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB6E254D19C10007B660 /* CustomTextfieldTableViewCell.swift */; };
-		83C6DB74254D19D40007B660 /* CustomTextfieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C6DB73254D19D40007B660 /* CustomTextfieldTableViewCell.xib */; };
-		83C6DB7B254D1A1E0007B660 /* FavoriteAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB7A254D1A1E0007B660 /* FavoriteAnimationView.swift */; };
-		83C6DB83254D1A290007B660 /* FavoriteAnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C6DB82254D1A290007B660 /* FavoriteAnimationView.xib */; };
 		83C6DB88254D1AF90007B660 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB87254D1AF90007B660 /* BaseNavigationController.swift */; };
 		83C6DB8D254D1B310007B660 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB8C254D1B310007B660 /* TabItem.swift */; };
 		83C6DB92254D1B4E0007B660 /* TabNavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6DB91254D1B4E0007B660 /* TabNavigationMenu.swift */; };
-		D248D919F26491F877C6897E /* Pods_kanto_demo_kanto_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D73262C9EFFC53FF182D51 /* Pods_kanto_demo_kanto_demoUITests.framework */; };
+		CF245A41180029092E5EA23C /* Pods_kanto_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607EC3DEC50B06E420828EC9 /* Pods_kanto_demoTests.framework */; };
+		EFDCA0E6D74A3691F0FB8DFA /* Pods_kanto_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1542B6B5FC858EC435B3B36 /* Pods_kanto_demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,11 +67,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11D73262C9EFFC53FF182D51 /* Pods_kanto_demo_kanto_demoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanto_demo_kanto_demoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E1AEF74B28319777D081394 /* Pods-kanto-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo.debug.xcconfig"; path = "Target Support Files/Pods-kanto-demo/Pods-kanto-demo.debug.xcconfig"; sourceTree = "<group>"; };
-		4A2D548B2C8604CF321197E5 /* Pods-kanto-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demoTests.debug.xcconfig"; path = "Target Support Files/Pods-kanto-demoTests/Pods-kanto-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5013A895CF4FA007AEBFC7C4 /* Pods-kanto-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo.release.xcconfig"; path = "Target Support Files/Pods-kanto-demo/Pods-kanto-demo.release.xcconfig"; sourceTree = "<group>"; };
-		6D7DF85A00B2436B5CD6F01F /* Pods_kanto_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanto_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11F15CF9624DCF8E7DFDEFAF /* Pods-kanto-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo.debug.xcconfig"; path = "Target Support Files/Pods-kanto-demo/Pods-kanto-demo.debug.xcconfig"; sourceTree = "<group>"; };
+		21B8D7563556715AD011F522 /* Pods-kanto-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demoTests.release.xcconfig"; path = "Target Support Files/Pods-kanto-demoTests/Pods-kanto-demoTests.release.xcconfig"; sourceTree = "<group>"; };
+		3875645681DFFF9A603FBC0B /* Pods_kanto_demo_kanto_demoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanto_demo_kanto_demoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		607EC3DEC50B06E420828EC9 /* Pods_kanto_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanto_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70090E6DCB7592C0A202E202 /* Pods-kanto-demo-kanto-demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo-kanto-demoUITests.debug.xcconfig"; path = "Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		83369939254E59D300A5F0F3 /* TabBarNavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNavigationTransition.swift; sourceTree = "<group>"; };
 		83369945254F07C900A5F0F3 /* RecordsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordsViewController.xib; sourceTree = "<group>"; };
 		833A66B72550BA87000C3E5B /* fav.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fav.json; sourceTree = "<group>"; };
@@ -86,7 +79,6 @@
 		83C6DA75254CA1780007B660 /* kanto-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kanto-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C6DA78254CA1780007B660 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83C6DA7A254CA1780007B660 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		83C6DA7C254CA1780007B660 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		83C6DA7F254CA1780007B660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		83C6DA82254CA1780007B660 /* kanto_demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = kanto_demo.xcdatamodel; sourceTree = "<group>"; };
 		83C6DA84254CA17D0007B660 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,19 +112,13 @@
 		83C6DB3C254D175E0007B660 /* BroadCastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadCastViewController.swift; sourceTree = "<group>"; };
 		83C6DB41254D17CE0007B660 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		83C6DB46254D17F90007B660 /* UserConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigViewController.swift; sourceTree = "<group>"; };
-		83C6DB64254D194E0007B660 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
-		83C6DB69254D195E0007B660 /* UserImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserImageView.xib; sourceTree = "<group>"; };
-		83C6DB6E254D19C10007B660 /* CustomTextfieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfieldTableViewCell.swift; sourceTree = "<group>"; };
-		83C6DB73254D19D40007B660 /* CustomTextfieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTextfieldTableViewCell.xib; sourceTree = "<group>"; };
-		83C6DB7A254D1A1E0007B660 /* FavoriteAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAnimationView.swift; sourceTree = "<group>"; };
-		83C6DB82254D1A290007B660 /* FavoriteAnimationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteAnimationView.xib; sourceTree = "<group>"; };
 		83C6DB87254D1AF90007B660 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		83C6DB8C254D1B310007B660 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		83C6DB91254D1B4E0007B660 /* TabNavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationMenu.swift; sourceTree = "<group>"; };
-		A61BB9A71172ABAB25FF8D2E /* Pods-kanto-demo-kanto-demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo-kanto-demoUITests.release.xcconfig"; path = "Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AB26697E3D15A34E12C5C1C6 /* Pods_kanto_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanto_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5B40A2F2030753CE834AF39 /* Pods-kanto-demo-kanto-demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo-kanto-demoUITests.debug.xcconfig"; path = "Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		FFF79616258ADAA663C5F84D /* Pods-kanto-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demoTests.release.xcconfig"; path = "Target Support Files/Pods-kanto-demoTests/Pods-kanto-demoTests.release.xcconfig"; sourceTree = "<group>"; };
+		93B8AC1B94EC6EAFA4CA1BEE /* Pods-kanto-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo.release.xcconfig"; path = "Target Support Files/Pods-kanto-demo/Pods-kanto-demo.release.xcconfig"; sourceTree = "<group>"; };
+		CE0CBF1ADC1B7FACD81B1C79 /* Pods-kanto-demo-kanto-demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demo-kanto-demoUITests.release.xcconfig"; path = "Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DC7A7EA05AA15F988A12D355 /* Pods-kanto-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanto-demoTests.debug.xcconfig"; path = "Target Support Files/Pods-kanto-demoTests/Pods-kanto-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F1542B6B5FC858EC435B3B36 /* Pods_kanto_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanto_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670AEF347FCB66C9A4E5B66A /* Pods_kanto_demo.framework in Frameworks */,
+				EFDCA0E6D74A3691F0FB8DFA /* Pods_kanto_demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				527B32B911BED6BEFAF158B0 /* Pods_kanto_demoTests.framework in Frameworks */,
+				CF245A41180029092E5EA23C /* Pods_kanto_demoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D248D919F26491F877C6897E /* Pods_kanto_demo_kanto_demoUITests.framework in Frameworks */,
+				216D8BA2A759852FC5A28F37 /* Pods_kanto_demo_kanto_demoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,22 +152,22 @@
 		02828755F910AE927F6E994C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3E1AEF74B28319777D081394 /* Pods-kanto-demo.debug.xcconfig */,
-				5013A895CF4FA007AEBFC7C4 /* Pods-kanto-demo.release.xcconfig */,
-				E5B40A2F2030753CE834AF39 /* Pods-kanto-demo-kanto-demoUITests.debug.xcconfig */,
-				A61BB9A71172ABAB25FF8D2E /* Pods-kanto-demo-kanto-demoUITests.release.xcconfig */,
-				4A2D548B2C8604CF321197E5 /* Pods-kanto-demoTests.debug.xcconfig */,
-				FFF79616258ADAA663C5F84D /* Pods-kanto-demoTests.release.xcconfig */,
+				11F15CF9624DCF8E7DFDEFAF /* Pods-kanto-demo.debug.xcconfig */,
+				93B8AC1B94EC6EAFA4CA1BEE /* Pods-kanto-demo.release.xcconfig */,
+				70090E6DCB7592C0A202E202 /* Pods-kanto-demo-kanto-demoUITests.debug.xcconfig */,
+				CE0CBF1ADC1B7FACD81B1C79 /* Pods-kanto-demo-kanto-demoUITests.release.xcconfig */,
+				DC7A7EA05AA15F988A12D355 /* Pods-kanto-demoTests.debug.xcconfig */,
+				21B8D7563556715AD011F522 /* Pods-kanto-demoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		1A3207565F9402B3697F1BCD /* Frameworks */ = {
+		12954338A9E117E1A5837DBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AB26697E3D15A34E12C5C1C6 /* Pods_kanto_demo.framework */,
-				11D73262C9EFFC53FF182D51 /* Pods_kanto_demo_kanto_demoUITests.framework */,
-				6D7DF85A00B2436B5CD6F01F /* Pods_kanto_demoTests.framework */,
+				F1542B6B5FC858EC435B3B36 /* Pods_kanto_demo.framework */,
+				3875645681DFFF9A603FBC0B /* Pods_kanto_demo_kanto_demoUITests.framework */,
+				607EC3DEC50B06E420828EC9 /* Pods_kanto_demoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,7 +221,7 @@
 				83C6DA9C254CA17E0007B660 /* kanto-demoUITests */,
 				83C6DA76254CA1780007B660 /* Products */,
 				02828755F910AE927F6E994C /* Pods */,
-				1A3207565F9402B3697F1BCD /* Frameworks */,
+				12954338A9E117E1A5837DBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -340,8 +326,6 @@
 		83C6DABC254CA5E00007B660 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				83C6DB78254D19EA0007B660 /* CustomViews */,
-				83C6DB4C254D18360007B660 /* Customcells */,
 				83C6DB07254CD6300007B660 /* MainNavigationControllers */,
 				83C6DAF5254CAAD40007B660 /* Profile */,
 			);
@@ -384,7 +368,6 @@
 				83369925254E528E00A5F0F3 /* BroadCast */,
 				83369924254E528400A5F0F3 /* Sing */,
 				83C6DAF6254CAAE60007B660 /* Records */,
-				83C6DA7C254CA1780007B660 /* ViewController.swift */,
 			);
 			path = MainNavigationControllers;
 			sourceTree = "<group>";
@@ -400,26 +383,6 @@
 			path = NavigationMenu;
 			sourceTree = "<group>";
 		};
-		83C6DB4C254D18360007B660 /* Customcells */ = {
-			isa = PBXGroup;
-			children = (
-				83C6DB6E254D19C10007B660 /* CustomTextfieldTableViewCell.swift */,
-				83C6DB73254D19D40007B660 /* CustomTextfieldTableViewCell.xib */,
-			);
-			path = Customcells;
-			sourceTree = "<group>";
-		};
-		83C6DB78254D19EA0007B660 /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				83C6DB69254D195E0007B660 /* UserImageView.xib */,
-				83C6DB64254D194E0007B660 /* UserImageView.swift */,
-				83C6DB7A254D1A1E0007B660 /* FavoriteAnimationView.swift */,
-				83C6DB82254D1A290007B660 /* FavoriteAnimationView.xib */,
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,11 +390,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83C6DAA2254CA17E0007B660 /* Build configuration list for PBXNativeTarget "kanto-demo" */;
 			buildPhases = (
-				59833939213CF3D731BB8553 /* [CP] Check Pods Manifest.lock */,
+				4F6E05633570E181194E4B01 /* [CP] Check Pods Manifest.lock */,
 				83C6DA71254CA1780007B660 /* Sources */,
 				83C6DA72254CA1780007B660 /* Frameworks */,
 				83C6DA73254CA1780007B660 /* Resources */,
-				6B59C7C61F59A7DE2F772E44 /* [CP] Embed Pods Frameworks */,
+				E5906A4A8CF687D5A46B0653 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -446,7 +409,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83C6DAA5254CA17E0007B660 /* Build configuration list for PBXNativeTarget "kanto-demoTests" */;
 			buildPhases = (
-				C7127102E09E3766EA82AF37 /* [CP] Check Pods Manifest.lock */,
+				A433327C033EC56B6F495EA8 /* [CP] Check Pods Manifest.lock */,
 				83C6DA8A254CA17D0007B660 /* Sources */,
 				83C6DA8B254CA17D0007B660 /* Frameworks */,
 				83C6DA8C254CA17D0007B660 /* Resources */,
@@ -465,11 +428,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83C6DAA8254CA17E0007B660 /* Build configuration list for PBXNativeTarget "kanto-demoUITests" */;
 			buildPhases = (
-				A967007BA44CA17DF7307F1E /* [CP] Check Pods Manifest.lock */,
+				7265377E10E105534F8AA812 /* [CP] Check Pods Manifest.lock */,
 				83C6DA95254CA17E0007B660 /* Sources */,
 				83C6DA96254CA17E0007B660 /* Frameworks */,
 				83C6DA97254CA17E0007B660 /* Resources */,
-				6DA461B7155B216AAD430540 /* [CP] Embed Pods Frameworks */,
+				1F53165AC368B6D031E80739 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -530,13 +493,10 @@
 			files = (
 				8336994D254F0E0600A5F0F3 /* RecordsViewController.xib in Resources */,
 				83C6DB2E254D16C80007B660 /* MyProfileViewController.xib in Resources */,
-				83C6DB6A254D195E0007B660 /* UserImageView.xib in Resources */,
 				833A66B82550BA87000C3E5B /* fav.json in Resources */,
 				83C6DA88254CA17D0007B660 /* LaunchScreen.storyboard in Resources */,
-				83C6DB83254D1A290007B660 /* FavoriteAnimationView.xib in Resources */,
 				83C6DA85254CA17D0007B660 /* Assets.xcassets in Resources */,
 				83C6DB12254CD7460007B660 /* RecordTableViewCell.xib in Resources */,
-				83C6DB74254D19D40007B660 /* CustomTextfieldTableViewCell.xib in Resources */,
 				83C6DA80254CA1780007B660 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,7 +518,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		59833939213CF3D731BB8553 /* [CP] Check Pods Manifest.lock */ = {
+		1F53165AC368B6D031E80739 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F6E05633570E181194E4B01 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -580,41 +557,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6B59C7C61F59A7DE2F772E44 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo/Pods-kanto-demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo/Pods-kanto-demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanto-demo/Pods-kanto-demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6DA461B7155B216AAD430540 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanto-demo-kanto-demoUITests/Pods-kanto-demo-kanto-demoUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A967007BA44CA17DF7307F1E /* [CP] Check Pods Manifest.lock */ = {
+		7265377E10E105534F8AA812 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -636,7 +579,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C7127102E09E3766EA82AF37 /* [CP] Check Pods Manifest.lock */ = {
+		A433327C033EC56B6F495EA8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -658,6 +601,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E5906A4A8CF687D5A46B0653 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo/Pods-kanto-demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-kanto-demo/Pods-kanto-demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanto-demo/Pods-kanto-demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -677,20 +637,16 @@
 				83C6DB88254D1AF90007B660 /* BaseNavigationController.swift in Sources */,
 				83C6DABF254CA6E10007B660 /* NSObjectExtension.swift in Sources */,
 				83C6DB8D254D1B310007B660 /* TabItem.swift in Sources */,
-				83C6DB65254D194E0007B660 /* UserImageView.swift in Sources */,
-				83C6DB7B254D1A1E0007B660 /* FavoriteAnimationView.swift in Sources */,
 				83C6DAC4254CA7140007B660 /* UIViewControllerExtension.swift in Sources */,
 				833A66BD2550F48E000C3E5B /* PersistanceManager.swift in Sources */,
 				83C6DB92254D1B4E0007B660 /* TabNavigationMenu.swift in Sources */,
 				83C6DAEC254CAA470007B660 /* NetworkService.swift in Sources */,
-				83C6DA7D254CA1780007B660 /* ViewController.swift in Sources */,
 				83C6DAC9254CA72C0007B660 /* UIViewExtension.swift in Sources */,
 				83C6DA79254CA1780007B660 /* AppDelegate.swift in Sources */,
 				83C6DB29254D16AC0007B660 /* MyProfileViewController.swift in Sources */,
 				83C6DACE254CA8C00007B660 /* Record.swift in Sources */,
 				83C6DAE2254CAA190007B660 /* AFSessionManagerProtocol.swift in Sources */,
 				83C6DAD3254CA9280007B660 /* Profile.swift in Sources */,
-				83C6DB6F254D19C10007B660 /* CustomTextfieldTableViewCell.swift in Sources */,
 				83C6DA7B254CA1780007B660 /* SceneDelegate.swift in Sources */,
 				83C6DB42254D17CE0007B660 /* NotificationsViewController.swift in Sources */,
 				83C6DAF1254CAA5B0007B660 /* NetworkServiceProtocol.swift in Sources */,
@@ -869,10 +825,11 @@
 		};
 		83C6DAA3254CA17E0007B660 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E1AEF74B28319777D081394 /* Pods-kanto-demo.debug.xcconfig */;
+			baseConfigurationReference = 11F15CF9624DCF8E7DFDEFAF /* Pods-kanto-demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44558RF7PG;
 				INFOPLIST_FILE = "kanto-demo/Info.plist";
@@ -882,6 +839,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masquenegocios.kanto-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -889,10 +847,11 @@
 		};
 		83C6DAA4254CA17E0007B660 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5013A895CF4FA007AEBFC7C4 /* Pods-kanto-demo.release.xcconfig */;
+			baseConfigurationReference = 93B8AC1B94EC6EAFA4CA1BEE /* Pods-kanto-demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44558RF7PG;
 				INFOPLIST_FILE = "kanto-demo/Info.plist";
@@ -902,6 +861,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masquenegocios.kanto-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -909,7 +869,7 @@
 		};
 		83C6DAA6254CA17E0007B660 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A2D548B2C8604CF321197E5 /* Pods-kanto-demoTests.debug.xcconfig */;
+			baseConfigurationReference = DC7A7EA05AA15F988A12D355 /* Pods-kanto-demoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -932,7 +892,7 @@
 		};
 		83C6DAA7254CA17E0007B660 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFF79616258ADAA663C5F84D /* Pods-kanto-demoTests.release.xcconfig */;
+			baseConfigurationReference = 21B8D7563556715AD011F522 /* Pods-kanto-demoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -955,7 +915,7 @@
 		};
 		83C6DAA9254CA17E0007B660 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5B40A2F2030753CE834AF39 /* Pods-kanto-demo-kanto-demoUITests.debug.xcconfig */;
+			baseConfigurationReference = 70090E6DCB7592C0A202E202 /* Pods-kanto-demo-kanto-demoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -976,7 +936,7 @@
 		};
 		83C6DAAA254CA17E0007B660 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A61BB9A71172ABAB25FF8D2E /* Pods-kanto-demo-kanto-demoUITests.release.xcconfig */;
+			baseConfigurationReference = CE0CBF1ADC1B7FACD81B1C79 /* Pods-kanto-demo-kanto-demoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -15,26 +15,20 @@ class RecordTableViewCell: UITableViewCell {
     
     var currentRecord:Record?
     @IBOutlet weak var cellContainer: UIView!
-
     @IBOutlet weak var footerContainer: UIView!
     @IBOutlet weak var photoUser: UIImageView!
-    
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var videoPreviewContainer: UIView!
     @IBOutlet weak var imageViewPreview: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var favAnimationContainer: UIView!
-    
     @IBOutlet weak var likeLabel: UILabel!
-    
     @IBOutlet weak var letsPlayContainer: UIView!
-    
     @IBOutlet weak var playButton: UIButton!
-    
+
     private var animationView: AnimationView?
     private var videoLayer:UIView!
-    
 
     var player: AVPlayer!
     var playerLayer:AVPlayerLayer!
@@ -49,15 +43,10 @@ class RecordTableViewCell: UITableViewCell {
     var widthForVideo:CGFloat = 310
     var heigtForVideo:CGFloat = 310
     
-    
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("appflow:: setCellData")
         self.letsPlayContainer.isHidden = true
         setMainConfigurationsCell()
-        
     }
     
     override func prepareForReuse() {
@@ -68,7 +57,6 @@ class RecordTableViewCell: UITableViewCell {
         self.videoUrl = nil
         self.songName = nil
         self.isFavorite = false
-//        self.videoLayer.removeFromSuperview()
         self.currentRecord = nil
         self.player = nil
         self.playerLayer = nil
@@ -76,9 +64,7 @@ class RecordTableViewCell: UITableViewCell {
     }
     
     func setCellData(record:Record?){
-        print("appflow:: setCellData")
         if let rec = record {
-            
             self.currentRecord = rec
             self.urlUserPhoto = rec.profile?.img
             self.headName = rec.profile?.name
@@ -98,6 +84,11 @@ class RecordTableViewCell: UITableViewCell {
     }
     private func setMainConfigurationsCell(){
         configureCellContainer()
+        cellContainer.clipsToBounds = true
+        cellContainer.layer.cornerRadius = 10
+        cellContainer.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+        photoUser.clipsToBounds = true
+        photoUser.layer.cornerRadius = photoUser.frame.height / 2
     }
     private func configureCellContainer(){
         self.cellContainer.backgroundColor = UIColor.init(red: 37/255, green: 37/255, blue: 37/255, alpha: 1.0)
@@ -115,14 +106,7 @@ class RecordTableViewCell: UITableViewCell {
     
     private func configureVideoPreviewContainer(){
         self.setMainImage(url: self.previewImgUrl ?? "", imageView: imageViewPreview)
-        print("appflow:: configureVideoPreviewContainer::videoPreviewContainer.frame: \(videoPreviewContainer.frame)")
-        
-        
-        
-//        installVideo()
         installVideo()
-        
-        
         
     }
     
@@ -137,7 +121,6 @@ class RecordTableViewCell: UITableViewCell {
         animationView?.frame = CGRect(x: 0, y: 0, width: favAnimationContainer.frame.width, height: favAnimationContainer.frame.height)
         animationView?.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         self.favAnimationContainer.addSubview(animationView!)
-//        self.favAnimationContainer = animationView!
         animationView?.contentMode = .scaleAspectFill
         animationView!.animationSpeed = 0.5
         let gestureFavorite = UITapGestureRecognizer(target: self, action:  #selector(self.favAction))
@@ -146,8 +129,6 @@ class RecordTableViewCell: UITableViewCell {
         self.likeLabel.textColor = .white
         
     }
-    
-    
     
     func setMainImage(url: String, imageView: UIImageView){
         if let url = URL(string: url) {
@@ -158,7 +139,6 @@ class RecordTableViewCell: UITableViewCell {
     @objc func favAction(sender : UITapGestureRecognizer) {
         isFavorite ?? false ? delFav() : addFav()
     }
-    
     
     private func startProgress() {
       animationView?.play(fromFrame: 0, toFrame: 0, loopMode: .none) { [weak self] (_) in
@@ -176,7 +156,6 @@ class RecordTableViewCell: UITableViewCell {
         isFavorite ?? false ? fullProgress() : startProgress()
     }
     
-    
     private func addFav() {
         fullProgress()
     }
@@ -185,42 +164,20 @@ class RecordTableViewCell: UITableViewCell {
         startProgress()
     }
     
-    
-//    func installVideo(){
-//        if let url = URL(string:self.videoUrl ?? "") {
-//            self.videoLayer = UIView(frame: videoPreviewContainer.frame)
-//            self.videoPreviewContainer.addSubview(videoLayer)
-//            player = AVPlayer(url: url) // your video url
-//            playerLayer = AVPlayerLayer(player: player)
-//            print("appflow:: configureVideoPreviewContainer::videoLayer.bounds:  \(videoLayer.bounds)")
-//            print("appflow:: configureVideoPreviewContainer::imageViewPreview.bounds:  \(imageViewPreview.bounds)")
-//            playerLayer.frame = CGRect(x: 0, y: 0, width: 310, height: 310)
-//            videoLayer.layer.addSublayer(playerLayer)
-////            self.videoPreviewContainer.bringSubviewToFront(self.letsPlayContainer)
-//        }
-//
-//
-//
-//    }
-    
     func installVideo(){
         if let url = URL(string:self.videoUrl ?? "") {
             avpController = AVPlayerViewController()
             player = AVPlayer(url: url)
             avpController.player = player
-            //AVPlayer.init(url: urlVideoFile)
             avpController.view.frame = self.videoPreviewContainer.bounds
             avpController.showsPlaybackControls = true
-//            [self.moviePlayerController.contentOverlayView addSubview:placeHolderImageView];
             self.player?.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions(rawValue: 0), context: nil)
-//            imageViewPreview.contentMode = .scaleAspectFit
             avpController.contentOverlayView?.addSubview(imageViewPreview)
             avpController.contentOverlayView?.frame = CGRect(x: 0, y: 0, width: 310, height: 310)
             self.videoPreviewContainer.addSubview(avpController.view)
-            
+            try! AVAudioSession.sharedInstance().setCategory(.playback, options: [])
             
             self.videoPreviewContainer.autoresizesSubviews = true
-//            self.videoPreviewContainer.bringSubviewToFront(self.letsPlayContainer)
         }
     }
     
@@ -239,14 +196,7 @@ class RecordTableViewCell: UITableViewCell {
     
     
     @IBAction func playButtonAction(_ sender: Any) {
-        print("appflow.:: playButtonAction")
-        //installVideo()
-//        player.play()
         avpController.player?.play()
     }
-    
-    
-    
-    
     
 }

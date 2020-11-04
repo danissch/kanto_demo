@@ -10,5 +10,4 @@ import Foundation
 protocol RecordsViewModelProtocol {
     var recordsList:Records { get }
     func getRecords(complete:@escaping (ServiceResult<Records?>) -> Void)
-    
 }
