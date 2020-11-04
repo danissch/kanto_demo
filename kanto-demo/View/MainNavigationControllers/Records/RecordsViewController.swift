@@ -280,35 +280,12 @@ extension RecordsViewController {
         if headerActive {
             inactiveHeader.isHidden = false
             inactiveHeader.fadeIn()
-            
-//            footerView.fadeOut()
-//            footerView.isHidden = true
-//
-//            currentName.fadeOut()
-//            currentName.isHidden = true
-//
-//            currentUserImageView.fadeOut()
-//            currentUserImageView.isHidden = true
-            
-            
+
             headerView.clipsToBounds = false
     
         }else {
             inactiveHeader.fadeOut()
             inactiveHeader.isHidden = true
-            
-            
-//
-//            footerView.isHidden = false
-//            footerView.fadeIn()
-//
-//            currentUserImageView.isHidden = false
-//            currentUserImageView.fadeIn()
-//
-//            currentName.isHidden = false
-//            currentName.fadeIn()
-            
-            
             
             headerView.clipsToBounds = true
   
