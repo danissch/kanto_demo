@@ -144,6 +144,7 @@ class RecordsViewController: UIViewController {
         self.currentName.text = PersistanceManager.sharedInstance.profileName
         self.currentUsername.text = "@\(PersistanceManager.sharedInstance.profileUserName)"
         self.currentUserBiography.text = PersistanceManager.sharedInstance.profileBiography
+        self.headerName.text = PersistanceManager.sharedInstance.profileName
         PersistanceManager.sharedInstance.loadimg()
     }
     
