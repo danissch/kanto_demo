@@ -38,7 +38,6 @@ class MyProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setupData()
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -70,12 +69,6 @@ class MyProfileViewController: UIViewController {
         setStyle1TextField(textField: textfieldUsername)
         setStyle1TextField(textField: textFieldBiography)
         
-        
-        
-//        profileImageContainer.clipsToBounds = true
-//        profileImageContainer.layer.cornerRadius = profileImageContainer.frame.height / 2
-        
-        
     }
     
     func setStyle1TextField(textField:UITextField){
@@ -89,8 +82,6 @@ class MyProfileViewController: UIViewController {
     }
     
     func setStyle2TextField(textField:UITextField){
-
-        
         var bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: textField.frame.height - 1, width: textField.frame.width, height: 1.0)
         bottomLine.backgroundColor = UIColor.white.cgColor
@@ -99,46 +90,31 @@ class MyProfileViewController: UIViewController {
         textField.delegate = self
     }
     
-    
-    
-    
     func setupData(){
-        print("appflow:Myprofile: setupData")
         self.imageToSave = PersistanceManager.sharedInstance.loadimg()
         self.textfieldName.text = PersistanceManager.sharedInstance.profileName
         self.textfieldUsername.text = PersistanceManager.sharedInstance.profileUserName
         self.textFieldBiography.text = PersistanceManager.sharedInstance.profileBiography
-//        self.profileImageView.kf.setImage(with: URL(string: PersistanceManager.sharedInstance.profileImage))
         self.profileImageView.image = self.imageToSave
     }
     
     @IBAction func changePhotoAction(_ sender: Any) {
-        print("appflow::: changePhotoAction")
-//        showPhotoMenu()
         pickPhoto()
     }
     
     
     @IBAction func acceptAction(_ sender: Any) {
-        print("appflow::: acceptAction")
         saveData()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        print("appflow::: cancelAction")
         navigateBack()
     }
     
     
     func saveData(){
-        print("appflow::Myprofile: imagePickerController")
-//        let image = imageToSave
-//        let pngImage = (image ?? UIImage(named:"userprofile"))!.pngData()
-//        if imageToSave ?? false {
         PersistanceManager.sharedInstance.saveimg(image: self.imageToSave!)
-//        }
-        
         PersistanceManager.sharedInstance.profileName = self.textfieldName.text ?? ""
         PersistanceManager.sharedInstance.profileUserName = self.textfieldUsername.text ?? ""
         PersistanceManager.sharedInstance.profileBiography = self.textFieldBiography.text ?? ""
@@ -210,7 +186,6 @@ extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigation
     
     
     func takePhotoWithCamera(){
-//        pickerController = UIImagePickerController()
         pickerController.sourceType = .camera
         pickerController.cameraCaptureMode = .photo
         pickerController.cameraDevice = UIImagePickerController.CameraDevice.front
@@ -221,10 +196,6 @@ extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigation
         
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("appflow::Myprofile: imagePickerController")
-//        profileImageView.image = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage
-//        profileImageView.backgroundColor = UIColor.clear
-//        profileImageView.contentMode = UIView.ContentMode.scaleAspectFit
         
         if let capturedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
                 picker.dismiss(animated: true, completion: nil)
@@ -233,22 +204,8 @@ extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigation
             self.imageToSave = capturedImage
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 self.profileImageView.image = capturedImage
-//                self.imageToSave = capturedImage
-//                PersistanceManager.sharedInstance.savePng((imageToSave ?? UIImage(named: "userprofile"))!)
-//                PersistanceManager.sharedInstance.savePng(capturedImage)
-                
-//                let path = "photo/temp/album1/profileImage.jpg"
-//                self.imageToSaveUrl = path
-//                guard   let img = UIImage(named: "profileImage"),
-//                        let url = img.save(at: .documentDirectory,
-//                                           pathAndImageName: path) else { return }
-//                print(url)
-                
-//                let success = PersistanceManager.sharedInstance.saveImage(image: capturedImage)
-//                self.imageToSave = capturedImage
             })
-//            profileImageView.image = capturedImage
-            }
+        }
         
         pickerController.dismiss(animated: true, completion: nil)
         
@@ -257,7 +214,6 @@ extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         pickerController.dismiss(animated: true, completion: nil)
     }
-    
     
     
 }
