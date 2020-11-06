@@ -105,7 +105,6 @@ class MyProfileViewController: UIViewController {
     
     @IBAction func acceptAction(_ sender: Any) {
         saveData()
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -114,12 +113,21 @@ class MyProfileViewController: UIViewController {
     
     
     func saveData(){
+        
+        if textfieldName.text == "" || textfieldUsername.text == "" || textFieldBiography.text == "" {
+            let alert = UIAlertController(title: "Validation", message: "Please fill all the fields", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
+        }
         PersistanceManager.sharedInstance.saveimg(image: self.imageToSave!)
         PersistanceManager.sharedInstance.profileName = self.textfieldName.text ?? ""
         PersistanceManager.sharedInstance.profileUserName = self.textfieldUsername.text ?? ""
         PersistanceManager.sharedInstance.profileBiography = self.textFieldBiography.text ?? ""
         delegate?.onSaveData()
+        self.dismiss(animated: true, completion: nil)
     }
+    
     
     
 }
